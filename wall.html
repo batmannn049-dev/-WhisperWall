@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WhisperWall — Confessions</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/wall.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body class="wall-body">
+
+  <!-- Background -->
+  <div class="bg-canvas wall-bg">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="grain"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <span class="brand-icon-sm">🕯️</span>
+        <span class="brand-name-sm">WhisperWall</span>
+      </div>
+      <div class="header-right">
+        <span class="user-badge" id="userBadge">👤 Loading…</span>
+        <button class="btn-logout" onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-section">
+    <h1 class="hero-title">The <em>Wall</em> is listening.</h1>
+    <p class="hero-sub">Drop your truth. No judgement. No identity.</p>
+  </section>
+
+  <!-- Confession Form -->
+  <section class="confession-form-section">
+    <div class="form-card">
+      <h2 class="form-heading">🕯️ Write Your Confession</h2>
+
+      <div class="field">
+        <label>Confession Title <span class="optional">(optional)</span></label>
+        <input type="text" id="confTitle" placeholder="Give it a name…" maxlength="80"/>
+      </div>
+
+      <div class="field">
+        <label>Your Confession</label>
+        <textarea id="confText" placeholder="Write what's been weighing on your heart… nobody knows it's you." maxlength="1000" rows="5"></textarea>
+        <span class="char-count"><span id="charCount">0</span>/1000</span>
+        <span class="field-error" id="confError"></span>
+      </div>
+
+      <div class="field">
+        <label>Mood</label>
+        <div class="mood-picker" id="moodPicker">
+          <button class="mood-btn active" data-mood="😶 Blank">😶 Blank</button>
+          <button class="mood-btn" data-mood="😔 Guilty">😔 Guilty</button>
+          <button class="mood-btn" data-mood="😤 Frustrated">😤 Frustrated</button>
+          <button class="mood-btn" data-mood="😢 Sad">😢 Sad</button>
+          <button class="mood-btn" data-mood="😅 Relieved">😅 Relieved</button>
+          <button class="mood-btn" data-mood="😂 Laughing">😂 Laughing</button>
+        </div>
+      </div>
+
+      <button class="btn-confess" id="confessBtn" onclick="postConfession()">
+        🕯️ Post to the Wall
+      </button>
+    </div>
+  </section>
+
+  <!-- Wall Feed -->
+  <section class="feed-section">
+    <div class="feed-header">
+      <h2 class="feed-title">The Wall</h2>
+      <div class="feed-controls">
+        <input type="text" id="searchInput" placeholder="🔍 Search confessions…" oninput="filterFeed()"/>
+        <select id="sortSelect" onchange="filterFeed()">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="popular">Most Liked</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="feed-grid" id="feedGrid">
+      <!-- Cards injected by JS -->
+      <div class="feed-empty hidden" id="feedEmpty">
+        <p>No confessions yet. Be the first to whisper. 🕯️</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Lightbox -->
+  <div class="lightbox hidden" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-card">
+      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <div class="lightbox-mood" id="lbMood"></div>
+      <h3 class="lightbox-title" id="lbTitle"></h3>
+      <p class="lightbox-body" id="lbBody"></p>
+      <div class="lightbox-meta" id="lbMeta"></div>
+    </div>
+  </div>
+
+  <script src="js/wall.js"></script>
+</body>
+</html>

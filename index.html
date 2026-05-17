@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WhisperWall — Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body class="login-body">
+
+  <!-- Animated background -->
+  <div class="bg-canvas">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <div class="grain"></div>
+  </div>
+
+  <div class="login-wrapper">
+
+    <!-- Brand -->
+    <div class="brand">
+      <div class="brand-icon">🕯️</div>
+      <h1 class="brand-name">WhisperWall</h1>
+      <p class="brand-tagline">Confess. Release. Be free.</p>
+    </div>
+
+    <!-- Login Card -->
+    <div class="login-card" id="loginCard">
+
+      <!-- Step 1: Name & Email -->
+      <div class="step" id="step1">
+        <h2 class="step-title">Enter the Wall</h2>
+        <p class="step-sub">Your identity stays safe. Your confession stays real.</p>
+
+        <div class="field">
+          <label>Your Name</label>
+          <input type="text" id="userName" placeholder="e.g. Anonymous Soul" autocomplete="off"/>
+          <span class="field-error" id="nameError"></span>
+        </div>
+
+        <div class="field">
+          <label>Email Address</label>
+          <input type="email" id="userEmail" placeholder="you@example.com" autocomplete="off"/>
+          <span class="field-error" id="emailError"></span>
+        </div>
+
+        <button class="btn-primary" id="sendOtpBtn" onclick="sendOTP()">
+          <span>Send OTP</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <!-- Step 2: OTP Verification -->
+      <div class="step hidden" id="step2">
+        <h2 class="step-title">Verify It's You</h2>
+        <p class="step-sub">We sent a 6-digit OTP to <span id="otpEmailDisplay" class="highlight"></span></p>
+
+        <div class="otp-boxes" id="otpBoxes">
+          <input class="otp-input" maxlength="1" type="text" inputmode="numeric" />
+          <input class="otp-input" maxlength="1" type="text" inputmode="numeric" />
+          <input class="otp-input" maxlength="1" type="text" inputmode="numeric" />
+          <input class="otp-input" maxlength="1" type="text" inputmode="numeric" />
+          <input class="otp-input" maxlength="1" type="text" inputmode="numeric" />
+          <input class="otp-input" maxlength="1" type="text" inputmode="numeric" />
+        </div>
+        <span class="field-error" id="otpError"></span>
+
+        <div class="otp-meta">
+          <span class="timer" id="otpTimer">Resend in <b id="countdown">60</b>s</span>
+          <button class="btn-link hidden" id="resendBtn" onclick="resendOTP()">Resend OTP</button>
+        </div>
+
+        <button class="btn-primary" id="verifyBtn" onclick="verifyOTP()">
+          <span>Verify & Enter</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+
+        <button class="btn-back" onclick="goBack()">← Change Email</button>
+      </div>
+
+      <!-- Step 3: Success -->
+      <div class="step hidden" id="step3">
+        <div class="success-anim">✅</div>
+        <h2 class="step-title">Welcome, <span id="welcomeName" class="highlight"></span>!</h2>
+        <p class="step-sub">You're verified. Ready to whisper to the wall?</p>
+        <button class="btn-primary" onclick="enterApp()">
+          <span>Enter WhisperWall</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <p class="footer-note">By entering, you agree to keep it anonymous & respectful.</p>
+  </div>
+
+  <!-- OTP Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

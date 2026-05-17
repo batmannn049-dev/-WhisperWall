@@ -1,0 +1,438 @@
+/* =============================================
+   css/wall.css — Confession Wall Page Styles
+   WhisperWall Confession App
+   ============================================= */
+
+.wall-body { padding-bottom: 80px; }
+
+/* ── Header ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,9,16,0.8);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon-sm { font-size: 1.4rem; filter: drop-shadow(0 0 8px rgba(201,125,78,0.6)); }
+.brand-name-sm {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.user-badge {
+  background: var(--bg-card2);
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  padding: 6px 14px;
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  padding: 6px 14px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-logout:hover { border-color: var(--red); color: var(--red); }
+
+/* ── Hero ── */
+.hero-section {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 70px 24px 40px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--accent);
+  text-shadow: 0 0 40px var(--accent-glow);
+}
+
+.hero-sub {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-style: italic;
+}
+
+/* ── Confession Form ── */
+.confession-form-section {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px 50px;
+}
+
+.form-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent2), var(--accent), transparent);
+}
+
+.form-heading {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ── Char Count ── */
+.char-count {
+  position: absolute;
+  bottom: 28px;
+  right: 12px;
+  color: var(--text-faint);
+  font-size: 0.75rem;
+}
+
+/* ── Mood Picker ── */
+.mood-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mood-btn {
+  background: var(--bg-deep);
+  border: 1.5px solid var(--border);
+  border-radius: 40px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  transition: all 0.2s;
+}
+
+.mood-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+
+.mood-btn.active {
+  background: var(--accent2-glow);
+  border-color: var(--accent2);
+  color: var(--text-primary);
+}
+
+/* ── Confess Button ── */
+.btn-confess {
+  background: linear-gradient(135deg, var(--accent2) 0%, #5b3da0 100%);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 15px 24px;
+  width: 100%;
+  transition: transform 0.18s, box-shadow 0.18s;
+  box-shadow: 0 4px 24px rgba(124,92,191,0.4);
+  letter-spacing: 0.02em;
+}
+.btn-confess:hover  { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(124,92,191,0.55); }
+.btn-confess:active { transform: translateY(0); }
+.btn-confess:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Feed ── */
+.feed-section {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.feed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.feed-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.feed-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.feed-controls input {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.87rem;
+  outline: none;
+  padding: 9px 16px;
+  width: 220px;
+  transition: border-color 0.2s;
+}
+.feed-controls input:focus { border-color: var(--accent2); }
+
+.feed-controls select {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.87rem;
+  padding: 9px 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ── Feed Grid ── */
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.feed-empty {
+  grid-column: 1/-1;
+  text-align: center;
+  color: var(--text-faint);
+  padding: 60px 0;
+  font-style: italic;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+/* ── Confession Card ── */
+.conf-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  cursor: pointer;
+  transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+  animation: cardIn 0.4s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+.conf-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(124,92,191,0.04), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.conf-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+.conf-card:hover::after { opacity: 1; }
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-mood {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.card-body {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.card-meta {
+  color: var(--text-faint);
+  font-size: 0.75rem;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-like, .btn-share {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  padding: 5px 12px;
+  color: var(--text-muted);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-like:hover  { border-color: #e05e5e; color: #e05e5e; }
+.btn-like.liked  { background: rgba(224,94,94,0.12); border-color: #e05e5e; color: #e05e5e; }
+.btn-share:hover { border-color: var(--accent2); color: var(--accent2); }
+
+/* ── Lightbox ── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.25s ease;
+}
+
+.lightbox-card {
+  background: var(--bg-card2);
+  border: 1.5px solid var(--border-hover);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  max-width: 560px;
+  width: 100%;
+  padding: 40px 36px;
+  position: relative;
+  animation: popIn 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 16px; right: 18px;
+  background: none;
+  border: none;
+  color: var(--text-faint);
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+.lightbox-close:hover { color: var(--text-primary); }
+
+.lightbox-mood { color: var(--text-muted); font-size: 0.85rem; }
+.lightbox-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+.lightbox-body {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.lightbox-meta {
+  color: var(--text-faint);
+  font-size: 0.78rem;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .form-card { padding: 24px 18px; }
+  .feed-controls input { width: 100%; }
+  .header-inner { padding: 12px 16px; }
+  .brand-name-sm { display: none; }
+  .lightbox-card { padding: 28px 20px; }
+}
